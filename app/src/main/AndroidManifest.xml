@@ -1,22 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="games.skilli">
-    <uses-permission android:name="android.permission.INTERNET"/>
+
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
-        android:usesCleartextTraffic="true"
         android:allowBackup="true"
         android:hardwareAccelerated="true"
         android:icon="@mipmap/skilli_icons"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/skilli_icons_round"
         android:supportsRtl="true"
-        android:theme="@android:style/Theme.NoTitleBar.Fullscreen">
-        <activity android:name=".MainActivity"
-            android:configChanges="orientation|screenSize">
+        android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
+        android:usesCleartextTraffic="true">
+        <activity android:name=".NewWEbPage"></activity>
+        <!-- Add this meta-data below, and change "key_live_xxxxxxx" to your actual live Branch key -->
+        <meta-data
+            android:name="io.branch.sdk.BranchKey"
+            android:value="key_live_kn1cLZj9f9sc6AoXzLTLWogmEEjw649r" /> <!-- For your test app, if you have one; Again, use your actual test Branch key -->
+        <meta-data
+            android:name="io.branch.sdk.BranchKey.test"
+            android:value="key_test_gd9eUZa5bXCeWro9EVQNYnkaAAiqXYXf" />
+        <meta-data
+            android:name="io.branch.sdk.TestMode"
+            android:value="false" />
+
+        <activity
+
+            android:name=".MainActivity"
+            android:configChanges="orientation|screenSize"
+            android:launchMode="singleTask">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+            <!-- Add this intent filter below, and change yourapp to your app name -->
+            <intent-filter>
+                <data
+                    android:host="open"
+                    android:scheme="skilligames" />
+
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
             </intent-filter>
         </activity>
     </application>
